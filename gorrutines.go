@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func fetchURL(url string, wg *sync.WaitGroup) {
+func fetchURLr(url string, wg *sync.WaitGroup) {
 	defer wg.Done() // marca esta corrutine como completada
 
 	start := time.Now()
@@ -22,7 +22,7 @@ func fetchURL(url string, wg *sync.WaitGroup) {
 	fmt.Printf("Fetched %s en %v - Status %s\n", url, duracion, resp.Status)
 }
 
-func main() {
+func mainn() {
 	urls := []string{
 		"https://rickandmortyapi.com/api/character/1",
 		"https://rickandmortyapi.com/api/character/2",
@@ -35,7 +35,7 @@ func main() {
 
 	for _, url := range urls {
 		wg.Add(1)
-		go fetchURL(url, &wg)
+		go fetchURLr(url, &wg)
 	}
 
 	wg.Wait()
